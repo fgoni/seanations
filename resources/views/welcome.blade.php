@@ -29,8 +29,8 @@
             Sea Nations
         </div>
         <div class="flex justify-center block">
-            <a href="{{ url('login') }}" class="btn btn-primary">Login</a>
-            <a href="{{ url('register') }}" class="btn btn-primary">Register</a>
+            <a href="{{ url('login') }}" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap py-2 px-4 rounded text-base leading-normal no-underline text-blue-lightest bg-blue hover:bg-blue-light">Login</a>
+            <a href="{{ url('register') }}" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap py-2 px-4 rounded text-base leading-normal no-underline text-blue-lightest bg-blue hover:bg-blue-light">Register</a>
         </div>
     </div>
 </div>

@@ -1,23 +1,32 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
+    <div class="container mx-auto mx-auto">
+        <div class="flex flex-wrap justify-center">
+            <div class="md:w-2/3 pr-4 pl-4">
+                <div class="col">
+                    <i class="fa fa-user">City</i>
+                    <span>Gold: ${{ $user->city->gold }}</span>
+                </div>
+                <div class="col">
+                    <i class="fa fa-lifevest"></i> Fleet
+                    <span>{{ $user->ships->count() }} ships</span>
+                    <a href="{{ route('ships.index') }}">Buy ship</a>
+                    <table>
+                        <tbody>
+                        @foreach($user->ships as $ship)
+                            <tr>
+                                <td>{{ $ship->name }}</td>
+                                <td>{{ $ship->cargo }}</td>
+                                <td>{{ $ship->crew }}</td>
+                                <td>{{ $ship->speed }}</td>
+                                <td>{{ $ship->cannons }}</td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
-</div>
 @endsection

@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class CreateCitiesTable extends Migration
+class CreateCannonsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,14 @@ class CreateCitiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('cities', function (Blueprint $table) {
+        Schema::create('cannons', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->unsignedInteger('user_id');
+            $table->integer('price');
+            $table->integer('power');
+            $table->integer('weight');
+            $table->boolean('is_black');
             $table->string('name');
-            $table->bigInteger('gold');
 
             $table->timestamps();
         });
@@ -31,6 +33,6 @@ class CreateCitiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cities');
+        Schema::dropIfExists('cannons');
     }
 }

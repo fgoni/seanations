@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Faker\Factory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -26,4 +27,27 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function city()
+    {
+        return $this->hasOne(City::class);
+    }
+
+    public function ships()
+    {
+        return $this->hasMany(UserShip::class);
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+        static::created(function (self $model) {
+            $faker = Factory::create();
+            $city = $model->city()->save(new City([
+                'user_id' => $model->getKey(),
+                'name'    => $faker->city,
+                'gold'    => 50000,
+            ]));
+        });
+    }
 }
